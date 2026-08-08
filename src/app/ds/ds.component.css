@@ -1,0 +1,185 @@
+.shell {
+  display: flex;
+  min-height: 100dvh;
+  background-color: var(--semantic-colour-background-page);
+}
+
+/* --- NAV SIDEBAR --- */
+.nav {
+  width: 280px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--semantic-colour-border);
+  background-color: var(--semantic-colour-background-card-default);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-10) var(--space-6);
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  overflow-y: auto;
+}
+
+.nav-header {
+  margin-bottom: var(--space-10);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-header h1, .nav-header h2, .nav-header h3 {
+  margin: 0;
+}
+
+.version-tag {
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  background-color: var(--semantic-colour-background-page);
+  color: var(--semantic-colour-text-body-secondary);
+  padding: 4px 8px;
+  border-radius: var(--semantic-corner-button-cta-normal);
+  border: 1px solid var(--semantic-colour-border);
+}
+
+.nav-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.nav-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.nav-section-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: var(--semantic-colour-text-body-tertiary);
+  margin-bottom: var(--space-1);
+}
+
+.nav-item {
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-family: 'Inter Display', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--semantic-colour-text-body-secondary);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-item:not(.nav-item--active):hover {
+  background-color: var(--semantic-colour-background-page);
+  color: var(--semantic-colour-text-body-primary);
+}
+
+.nav-item--active {
+  background-color: var(--semantic-colour-background-card-hover);
+  color: var(--semantic-colour-text-body-inverted);
+  cursor: default;
+}
+
+/* --- CONTENT --- */
+.content {
+  flex: 1;
+  padding: var(--space-10) var(--space-16);
+}
+
+.page-title {
+  margin: 0;
+  margin-bottom: var(--space-10);
+  color: var(--semantic-colour-text-body-primary);
+}
+
+.page-sub {
+  color: var(--semantic-colour-text-body-secondary);
+}
+
+/* --- CARDS --- */
+.section-card {
+  background-color: var(--semantic-colour-background-card-default);
+  border: 1px solid var(--semantic-colour-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  margin-bottom: var(--space-4);
+}
+
+.section-card-header {
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--semantic-colour-border);
+}
+
+.section-card-title {
+  margin: 0;
+  color: var(--semantic-colour-text-body-primary);
+}
+
+.section-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.component-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+/* --- COLOUR SWATCHES --- */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.swatch-cell {
+  background: var(--semantic-colour-background-card-default);
+  border: 1px solid var(--semantic-colour-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.swatch-color {
+  height: 64px;
+  width: 100%;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-2);
+}
+
+.swatch-border {
+  border: 1px solid var(--semantic-colour-border);
+}
+
+.swatch-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--semantic-colour-text-body-primary);
+}
+
+.swatch-token {
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--semantic-colour-text-body-secondary);
+  word-break: break-all;
+}
+
+/* --- DEMO BUTTONS --- */
+.demo-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+}

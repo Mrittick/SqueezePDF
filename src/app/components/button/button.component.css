@@ -1,0 +1,119 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--semantic-padding-button-vertical) var(--semantic-padding-button-horizontal);
+  gap: var(--semantic-padding-button-spacing);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0, 0, 0, 1);
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  
+  /* Typography (matching .ui-text from styles.css) */
+  font-family: 'Inter Display', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.005em;
+}
+
+/* Disabled State Base */
+.btn:disabled,
+.btn.btn-state-disabled {
+  cursor: not-allowed;
+}
+
+/* --- Corners --- */
+.btn-corners-full {
+  border-radius: var(--semantic-corner-button-cta-full);
+}
+.btn-corners-normal {
+  border-radius: var(--semantic-corner-button-cta-normal);
+}
+
+/* --- Types & States --- */
+
+/* Primary */
+.btn-primary {
+  background-color: var(--semantic-colour-button-fill-primary-default);
+  color: var(--semantic-colour-text-button-primary-default);
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--semantic-colour-button-fill-primary-hover);
+  color: var(--semantic-colour-text-button-primary-hover);
+}
+.btn-primary:active:not(:disabled),
+.btn-primary.btn-state-pressed:not(:disabled) {
+  background-color: var(--semantic-colour-button-fill-primary-pressed);
+  color: var(--semantic-colour-text-button-primary-pressed);
+}
+.btn-primary:disabled,
+.btn-primary.btn-state-disabled {
+  background-color: var(--semantic-colour-button-fill-primary-disabled);
+  color: var(--semantic-colour-text-button-primary-disabled);
+}
+
+/* Secondary */
+.btn-secondary {
+  background-color: var(--semantic-colour-button-fill-secondary-default);
+  color: var(--semantic-colour-text-button-secondary-default);
+  border: 1px solid var(--semantic-colour-button-stroke-secondary-default);
+}
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--semantic-colour-button-fill-secondary-hover);
+  color: var(--semantic-colour-text-button-secondary-hover);
+  border-color: var(--semantic-colour-button-stroke-secondary-hover);
+}
+.btn-secondary:active:not(:disabled),
+.btn-secondary.btn-state-pressed:not(:disabled) {
+  background-color: var(--semantic-colour-button-fill-secondary-pressed);
+  color: var(--semantic-colour-text-button-secondary-pressed);
+  border-color: var(--semantic-colour-button-stroke-secondary-pressed);
+}
+.btn-secondary:disabled,
+.btn-secondary.btn-state-disabled {
+  background-color: var(--semantic-colour-button-fill-secondary-disabled);
+  color: var(--semantic-colour-text-button-secondary-disabled);
+  border-color: var(--semantic-colour-button-stroke-secondary-disabled);
+}
+
+/* Tertiary */
+.btn-tertiary {
+  background-color: var(--semantic-colour-button-fill-tertiary-default);
+  color: var(--semantic-colour-text-button-tertiary-default);
+}
+.btn-tertiary:hover:not(:disabled) {
+  background-color: var(--semantic-colour-button-fill-tertiary-hover);
+  color: var(--semantic-colour-text-button-tertiary-hover);
+  text-decoration: underline;
+}
+.btn-tertiary:active:not(:disabled),
+.btn-tertiary.btn-state-pressed:not(:disabled) {
+  background-color: var(--semantic-colour-button-fill-tertiary-pressed);
+  color: var(--semantic-colour-text-button-tertiary-pressed);
+}
+.btn-tertiary:disabled,
+.btn-tertiary.btn-state-disabled {
+  background-color: var(--semantic-colour-button-fill-tertiary-disabled);
+  color: var(--semantic-colour-text-button-tertiary-disabled);
+}
+
+/* --- Contents --- */
+.btn-icon {
+  display: flex;
+  align-items: center;
+}
+
+.btn-contents-iconLeft {
+  padding-left: var(--semantic-padding-button-iconside);
+}
+
+.btn-contents-iconRight {
+  padding-right: var(--semantic-padding-button-iconside);
+}
+
+.btn-contents-iconOnly {
+  padding: var(--semantic-padding-button-iconside);
+}

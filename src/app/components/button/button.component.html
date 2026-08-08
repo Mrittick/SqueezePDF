@@ -1,0 +1,20 @@
+<button 
+  [ngClass]="buttonClasses"
+  [disabled]="disabled || state === 'disabled'">
+  
+  <!-- Icon Left or Icon Only -->
+  <span *ngIf="contents === 'iconLeft' || contents === 'iconOnly'" class="btn-icon">
+    <ng-content select="[icon-left], [icon-only]"></ng-content>
+  </span>
+
+  <!-- Text Content (Hidden if iconOnly) -->
+  <span *ngIf="contents !== 'iconOnly'" class="btn-text">
+    <ng-content></ng-content>
+  </span>
+
+  <!-- Icon Right -->
+  <span *ngIf="contents === 'iconRight'" class="btn-icon">
+    <ng-content select="[icon-right]"></ng-content>
+  </span>
+
+</button>

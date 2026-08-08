@@ -1,0 +1,122 @@
+<div class="shell">
+  <!-- ═══ LEFT NAV ═══ -->
+  <nav class="nav">
+    <div class="nav-header">
+      <h1 class="h3">Jupiter DS</h1>
+      <span class="version-tag">v1.0.0</span>
+    </div>
+
+    <div class="nav-body">
+      <div class="nav-section">
+        <span class="nav-section-label">Tokens</span>
+        <button class="nav-item" [class.nav-item--active]="activeTab() === 'colours'" (click)="setTab('colours')">Colours</button>
+      </div>
+
+      <div class="nav-section">
+        <span class="nav-section-label">Components</span>
+        <button class="nav-item" [class.nav-item--active]="activeTab() === 'button'" (click)="setTab('button')">Button</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ CONTENT ═══ -->
+  <main class="content">
+    @switch (activeTab()) {
+      
+      @case ('colours') {
+        <h2 class="page-title h2">Colours</h2>
+        <p class="page-sub p1">Primitive and semantic colour tokens mapping to the Jupiter Design System.</p>
+
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title">Primitives (Earth Family)</span>
+          </div>
+          <div class="swatch-grid">
+            @for (step of primitiveEarth; track step) {
+              <div class="swatch-cell">
+                <div class="swatch-color" [style.backgroundColor]="'var(--color-brand-earth-' + step + ')'"></div>
+                <span class="swatch-token">Earth {{step}}</span>
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title">Semantic Tokens</span>
+          </div>
+          <div class="swatch-grid">
+            @for (sem of semanticTokens; track sem.name) {
+              <div class="swatch-cell">
+                <div class="swatch-color swatch-border" [style.backgroundColor]="'var(' + sem.token + ')'"></div>
+                <span class="swatch-name">{{sem.name}}</span>
+                <span class="swatch-token">{{sem.token}}</span>
+              </div>
+            }
+          </div>
+        </div>
+      }
+
+      @case ('button') {
+        <h2 class="page-title h2">Button Component</h2>
+        <p class="page-sub p1">These buttons map 1:1 with the Figma Design System specs, using no inline styles.</p>
+
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title">Primary Buttons</span>
+          </div>
+          <div class="demo-buttons">
+            <app-button type="primary" state="default">Default</app-button>
+            <app-button type="primary" state="hover">Hover</app-button>
+            <app-button type="primary" state="pressed">Pressed</app-button>
+            <app-button type="primary" [disabled]="true">Disabled</app-button>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title">Secondary Buttons</span>
+          </div>
+          <div class="demo-buttons">
+            <app-button type="secondary" state="default">Default</app-button>
+            <app-button type="secondary" state="hover">Hover</app-button>
+            <app-button type="secondary" state="pressed">Pressed</app-button>
+            <app-button type="secondary" [disabled]="true">Disabled</app-button>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title">Tertiary Buttons</span>
+          </div>
+          <div class="demo-buttons">
+            <app-button type="tertiary" state="default">Default</app-button>
+            <app-button type="tertiary" state="hover">Hover</app-button>
+            <app-button type="tertiary" state="pressed">Pressed</app-button>
+            <app-button type="tertiary" [disabled]="true">Disabled</app-button>
+          </div>
+        </div>
+        
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title">Corners & Icons</span>
+          </div>
+          <div class="demo-buttons">
+            <app-button type="primary" corners="normal">Normal Corners</app-button>
+            <app-button type="secondary" corners="normal" contents="iconLeft">
+              <span icon-left>✨</span>
+              Icon Left
+            </app-button>
+            <app-button type="secondary" corners="normal" contents="iconRight">
+              Icon Right
+              <span icon-right>🚀</span>
+            </app-button>
+            <app-button type="tertiary" corners="normal" contents="iconOnly">
+              <span icon-only>🔍</span>
+            </app-button>
+          </div>
+        </div>
+      }
+    }
+  </main>
+</div>

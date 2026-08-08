@@ -1,0 +1,108 @@
+<div class="shell">
+  <!-- ═══ LEFT NAV ═══ -->
+  <nav class="nav">
+    <div class="nav-header">
+      <h1 class="h3">SqueezePDF</h1>
+      <span class="version-tag">v1.0.0</span>
+    </div>
+
+    <div class="nav-body">
+      <div class="nav-section">
+        <span class="nav-section-label">Menu</span>
+        <button class="nav-item nav-item--active">Home</button>
+        <button class="nav-item">About</button>
+        <button class="nav-item">Donate</button>
+      </div>
+      
+      <div class="nav-section">
+        <span class="nav-section-label">Contact</span>
+        <button class="nav-item">Email</button>
+        <button class="nav-item">GitHub</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ CONTENT ═══ -->
+  <main class="content">
+    <div style="margin-bottom: var(--space-8);">
+      <app-button (click)="navigateTo('https://mrittick.com')" type="secondary" corners="normal" contents="iconLeft">
+        <app-icon icon-left name="arrow-left"></app-icon>
+        Back to Home
+      </app-button>
+    </div>
+    <div class="hero-section">
+      <div class="hero-title-group">
+        <img class="hero-logo" src="assets/global/logo.svg" alt="SqueezePDF Logo" />
+        <h1 class="page-title h1">SqueezePDF</h1>
+      </div>
+      <p class="page-sub p1">
+        A blazingly fast, zero-dependency tool to aggressively compress PDF files, based on native macOS hardware-accelerated pipeline (Apple Metal & PDFKit).<br />
+        <span style="display: inline-block;">Brought to you for free, by <a href="https://mrittick.com" target="_blank" rel="noopener noreferrer">Mrittick Choudhary</a>.</span>
+      </p>
+      
+      <div class="demo-buttons">
+        <app-button (click)="downloadFile()" type="primary" state="default" corners="normal" contents="iconLeft">
+          <app-icon icon-left name="download-default"></app-icon>
+          Download Tool
+        </app-button>
+        <app-button type="secondary" state="default" corners="normal" contents="iconLeft" (click)="navigateTo('https://paypal.me/mrittick', true)">
+          <app-icon icon-left name="heart"></app-icon>
+          Support / Donate
+        </app-button>
+      </div>
+    </div>
+
+    <div class="bento-grid">
+      <div class="section-card card-full">
+        <div class="section-card-header">
+          <h2 class="section-card-title h3">Installation &amp; Usage</h2>
+        </div>
+        <div class="section-card-body">
+          <p class="p1">No dependencies. No Homebrew. No Swift packages to compile.</p>
+          <ul class="p1 list-styled">
+            <li>After downloading the file, unzip it, and move the extracted executable to <code>"/usr/local/bin/"</code></li>
+            <li>You may need to whitelist the tool by running: <code>"sudo xattr -d com.apple.quarantine /usr/local/bin/squeezepdf"</code></li>
+            <li>Open Terminal, type <code>"squeezepdf"</code> followed by a space, then drag-and-drop the PDF file into the Terminal window, and press the Enter/Return key.</li>
+          </ul>
+          <p class="p1">Wait for a few moments: the compressed output will be right beside the master file (with a "-compressed" suffix in its file name).</p>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-card-header">
+          <h2 class="section-card-title h3">The Problem</h2>
+        </div>
+        <div class="section-card-body">
+          <p class="p1">Have you ever tried to compress heavy PDFs (like design portfolios, marketing sheets, etc), only to find that the free tools mangle the content, break the layout, malform images, or barely reduce the file size?</p>
+          <ul class="p1 list-styled">
+            <li>The alternatives are either paying <em>certain companies</em> an expensive monthly subscription just for the "Reduce File Size" / "Compress a PDF" feature.</li>
+            <li>Or online tools that are free, but don't run locally. Those tools send your files to a third-party server, which may not be secure or private.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-card-header">
+          <h2 class="section-card-title h3">The Solution</h2>
+        </div>
+        <div class="section-card-body">
+          <p class="p1"><strong>SqueezePDF</strong> is a single local script that acts as a wrapper around Apple's native PDFKit engine. It uses an inline Swift script to securely interface with macOS's built-in PDF optimizer.</p>
+          <p class="p1">It takes massive, bloated PDFs, intelligently converts their embedded images to highly compressed JPEGs, and downsamples them for screen viewing - all locally, instantly, and for absolutely free.</p>
+          <p class="p1"><strong>Result:</strong> A 1GB master PDF reduced to ~120MB in seconds (approximation).</p>
+        </div>
+      </div>
+      
+      <div class="section-card card-full">
+        <div class="section-card-header">
+          <h2 class="section-card-title h3">Why not use Ghostscript or Python?</h2>
+        </div>
+        <div class="section-card-body">
+          <ol class="p1 list-styled">
+            <li>Ghostscript is incredibly powerful but often struggles with modern PDF transparencies and complex vector layers, resulting in garbled or missing elements.</li>
+            <li>Python tools require you to manage <code>pip</code> dependencies and virtual environments. SqueezePDF relies 100% on Apple's native PDFKit API, guaranteeing safety, compatibility, and zero dependency hell.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

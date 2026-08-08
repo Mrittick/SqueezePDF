@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# SqueezePDF - A native macOS PDF compressor using PDFKit
+
+if [ -z "$1" ]; then
+  echo "Usage: squeezepdf <file_location>"
+  exit 1
+fi
+
+INPUT_FILE="$1"
+
+if [ ! -f "$INPUT_FILE" ]; then
+  echo "Error: File '$INPUT_FILE' not found."
+  exit 1
+fi
+
+DIR=$(dirname "$INPUT_FILE")
+BASENAME=$(basename "$INPUT_FILE" .pdf)
+BASENAME=$(basename "$BASENAME" .PDF)
+OUTPUT_FILE="$DIR/$BASENAME-compressed.pdf"
+
+echo "Squeezing '$INPUT_FILE' using Apple PDFKit Optimization..."
+
+/usr/bin/swift - "$INPUT_FILE" "$OUTPUT_FILE" << 'SWIFT'
+import Foundation
+import Quartz
+
+let args = CommandLine.arguments
+let inputURL = URL(fileURLWithPath: args[1])
+let outputURL = URL(fileURLWithPath: args[2])
+
+guard let pdf = PDFDocument(url: inputURL) else {
+    print("Error: Could not read PDF.")
+    exit(1)
+}
+
+// Use native PDFKit optimization options instead of a Quartz Filter XML
+let options: [PDFDocumentWriteOption: Any] = [
+    .optimizeImagesForScreenOption: true,
+    .saveImagesAsJPEGOption: true
+]
+
+if pdf.write(to: outputURL, withOptions: options) {
+    // Success
+} else {
+    print("Error: PDFKit failed to save the compressed PDF.")
+    exit(1)
+}
+SWIFT
+
+if [ $? -eq 0 ]; then
+  echo "Success! Compressed PDF saved to:"
+  echo "$OUTPUT_FILE"
+  
+  ORIGINAL_SIZE=$(du -h "$INPUT_FILE" | cut -f1)
+  NEW_SIZE=$(du -h "$OUTPUT_FILE" | cut -f1)
+  echo "Size reduced from $ORIGINAL_SIZE to $NEW_SIZE."
+else
+  echo "Error: Compression failed."
+  exit 1
+fi
