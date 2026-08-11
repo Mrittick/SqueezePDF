@@ -1,41 +1,59 @@
-# SqueezePDF
+# SqueezepdfWeb
 
-A blazingly fast, zero-dependency tool to aggressively compress PDF files, based on native macOS hardware-accelerated pipeline (Apple Metal & PDFKit).
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.3.
 
-## The Problem
-Have you ever tried to compress a heavy PDFs (like design portfolios, marketing sheets, etc), only to find that the free tools mangle the content, break the layout, malform images, or barely reduce the file size? 
+## Development server
 
-* The alternatives are either paying certain companies an expensive monthly subscription just for the "Reduce File Size" / "Compress a PDF" feature, 
+To start a local development server, run:
 
-* Or online tools that are free, but don't run locally. Those tools send your files to a third-party server, which may not be secure or private.
+```bash
+ng serve
+```
 
-## The Solution
-* **SqueezePDF** is a single local script that acts as a wrapper around Apple's native `PDFKit` engine. It uses an inline Swift script to securely interface with macOS's built-in PDF optimizer (`optimizeImagesForScreenOption` and `saveImagesAsJPEGOption`). 
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-* It takes massive, bloated PDFs, intelligently converts their embedded images to highly compressed JPEGs, and downsamples them for screen viewing — all locally, instantly, and for absolutely free. 
+## Code scaffolding
 
-**Result**: A 1GB master PDF reduced to ~120MB in seconds (approximation). 
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-## Installation
+```bash
+ng generate component component-name
+```
 
-No dependencies. No Homebrew. No Swift packages to compile.
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-1. Download the tool → https://SqueezePDF.mrittick.com
-2. Setup the script → move the downloaded file to "/usr/local/bin/"
-3. You may need to whitelist the script → Open Terminal, and run command "sudo xattr -d com.apple.quarantine /usr/local/bin/squeezepdf"
+```bash
+ng generate --help
+```
 
-## Usage
+## Building
 
-* In Terminal, type "squeezepdf" followed by a space, then drag-and-drop the PDF file into the Terminal window, and press the Enter/Return key. 
-* Wait for a few moments: the compressed output will be right beside the master file (with a "-compressed" suffix in its file name).
-* The output will be in the exact same directory as the master file's.
+To build the project run:
 
-## Why not use Ghostscript or Python?
-1. Ghostscript is incredibly powerful but often struggles with modern PDF transparencies and complex vector layers, resulting in garbled or missing elements. 
-2. Python tools require you to manage `pip` dependencies and virtual environments. SqueezePDF relies 100% on Apple's native `PDFKit` API, guaranteeing safety, compatibility, and zero dependency hell.
+```bash
+ng build
+```
 
-## License
-MIT License. Free to use forever.
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Donate or Support
-This is a free tool. If you find it useful, you can support its development, or just buy me a coffee! → https://paypal.me/mrittick
+## Running unit tests
+
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
