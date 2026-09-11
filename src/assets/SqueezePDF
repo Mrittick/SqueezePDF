@@ -34,10 +34,17 @@ guard let pdf = PDFDocument(url: inputURL) else {
     exit(1)
 }
 
-// Use native PDFKit optimization options instead of a Quartz Filter XML
+let filterURL = URL(fileURLWithPath: "/System/Library/Filters/Reduce File Size.qfilter")
+guard let filter = QuartzFilter(url: filterURL) else {
+    print("Error: Could not load macOS Reduce File Size filter.")
+    exit(1)
+}
+
+// Re-enable Quartz Filter explicitly to force aggressive compression on newer macOS versions
 let options: [PDFDocumentWriteOption: Any] = [
     .optimizeImagesForScreenOption: true,
-    .saveImagesAsJPEGOption: true
+    .saveImagesAsJPEGOption: true,
+    PDFDocumentWriteOption(rawValue: "QuartzFilter"): filter
 ]
 
 if pdf.write(to: outputURL, withOptions: options) {
